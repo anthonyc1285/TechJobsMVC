@@ -14,29 +14,30 @@ namespace TechJobsMVC.Controllers
     {
         internal static Dictionary<string, string> ColumnChoices = new Dictionary<string, string>()
         {
+            //reordered to match Assignment example
             {"all", "All"},
-            {"employer", "Employer"},
-            {"location", "Location"},
             {"positionType", "Position Type"},
-            {"coreCompetency", "Skill"}
+            {"employer", "Employer"},
+            {"coreCompetency", "Skill"},
+            {"location", "Location"}
         };
         internal static Dictionary<string, List<JobField>> TableChoices = new Dictionary<string, List<JobField>>()
         {
-            {"employer", JobData.GetAllEmployers()},
-            {"location", JobData.GetAllLocations()},
             {"positionType", JobData.GetAllPositionTypes()},
-            {"coreCompetency", JobData.GetAllCoreCompetencies()}
+            {"employer", JobData.GetAllEmployers()},
+            {"coreCompetency", JobData.GetAllCoreCompetencies()},
+            {"location", JobData.GetAllLocations()}
         };
 
         public IActionResult Index()
         {
             ViewBag.columns = ColumnChoices;
             ViewBag.tableChoices = TableChoices;
-            ViewBag.employers = JobData.GetAllEmployers();
-            ViewBag.locations = JobData.GetAllLocations();
             ViewBag.positionTypes = JobData.GetAllPositionTypes();
+            ViewBag.employers = JobData.GetAllEmployers();
             ViewBag.skills = JobData.GetAllCoreCompetencies();
-
+            ViewBag.locations = JobData.GetAllLocations();
+            
             return View();
         }
 
